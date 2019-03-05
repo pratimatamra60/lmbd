@@ -4,6 +4,18 @@ import './App.css';
 //const welcome = "Welcome to First react app";
 
 class App extends Component { 
+
+  constructor(props) {
+    super(props);
+    console.log('constructor');
+  }
+//this fired before the render 
+  componentWillMount() {
+    console.log('will mount');
+  }
+  componentDidMount () {
+    console.log('mounted');
+  }
    state = {
      toggle: true
    } 
@@ -12,6 +24,8 @@ class App extends Component {
        toggle: !this.state.toggle
      })
    }
+
+
   render() {
     return (
       <div className="App">
