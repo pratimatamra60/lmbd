@@ -4,11 +4,22 @@ import './App.css';
 //const welcome = "Welcome to First react app";
 
 class App extends Component { 
+  state = {
+    input: 'hello' 
+  }
+
+  updateInput = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      // trim is preventing from user adding spaces
+      //example of controlled input
+      input: event.target.value.trim()
+    })
+  }
 
    submit = () => {
      console.log(this.text.value );
-     console.log(this.email.value );
-     
+     console.log(this.email.value ); 
    }
 
 
@@ -27,9 +38,11 @@ class App extends Component {
             ref={(input) => this.text = input}>
             Learn React
           </a>
-<input type="text" ref={(input) => this.text = input} />
-<input type="email" ref={(input) => this.email = input} />
-        <button onClick={this.submit}> show value</button>
+          
+          <input type="text" onChange={this.updateInput}value={this.state.input}/>
+          <input type="text" ref={(input) => this.text = input} />
+          <input type="email" ref={(input) => this.email = input} />
+          <button onClick={this.submit}> show value</button>
         </header>
 
         
