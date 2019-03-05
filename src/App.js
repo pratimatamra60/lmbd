@@ -13,6 +13,9 @@ class App extends Component {
           <p>
             this is a first react app
           </p>
+      <p>
+TESTING Git
+      </p>
           <a
             className="App-link"
             href="https://reactjs.org"
