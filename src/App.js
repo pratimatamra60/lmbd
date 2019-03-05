@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Welcome/>
+          <Welcome text ="introduction to props"/>
           <p>
             this is a first react app
           </p>
@@ -29,9 +29,13 @@ class App extends Component {
 
 class Welcome extends Component {
   render() {
+    // do some js before return
+    const { text } = this.props; 
     return (
-      <h1 className="App-title">{welcome}</h1>
+      <h1 className="App-title">{ text }</h1>
+      // passing data from parent class to child class
+      //<h1 className="App-title">{this.props.text}</h1>
     );
   }
-}
+} 
 export default App; 
