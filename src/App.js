@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-const welcome = "Welcome to First react app";
+//const welcome = "Welcome to First react app";
 
-class App extends Component {  
+class App extends Component { 
+   state = {
+     toggle: true
+   } 
+   toggle = () => {
+     this.setState({
+       toggle: !this.state.toggle
+     })
+   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Welcome text ="introduction to props"/>
-          <p>
-            this is a first react app
-          </p>
-      <p>
-TESTING Git
-      </p>
+          <Welcome text ="introduction to props" toggle = {this.state.toggle}/>
+          
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -24,7 +27,15 @@ TESTING Git
           >
             Learn React
           </a>
+
+          {this.state.toggle &&  
+          <p>This should show and hide.</p>
+        }         
+     
+        <button onClick={this.toggle}> show/hide</button>
         </header>
+
+        
       </div>
     );
   }
@@ -33,7 +44,8 @@ TESTING Git
 class Welcome extends Component {
   render() {
     // do some js before return
-    const { text } = this.props; 
+    const { text, toggle} = this.props; 
+    console.log(toggle);
     return (
       <h1 className="App-title">{ text }</h1>
       // passing data from parent class to child class
