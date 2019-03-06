@@ -1,65 +1,36 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-//const welcome = "Welcome to First react app";
 
-class App extends Component { 
-  state = {
-    input: 'hello' 
+import Movie from './Movie';
+// const movies is an array of objects
+const movies = [{
+    id: 1,
+    title: 'Star Wars'
+  }, {
+    id: 2,
+    title: 'Spider Man'
+  }, {
+    id: 3,
+    title: '36th Chamber of Shaolin'
+  }, {
+    id: 4,
+    title: '5 Deadly Venoms'
   }
-
-  updateInput = (event) => {
-    console.log(event.target.value);
-    this.setState({
-      // trim is preventing from user adding spaces
-      //example of controlled input
-      input: event.target.value.trim()
-    })
-  }
-
-   submit = () => {
-     console.log(this.text.value );
-     console.log(this.email.value ); 
-   }
+];
 
 
+class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <Welcome text ="introduction to props" />
-          
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            ref={(input) => this.text = input}>
-            Learn React
-          </a>
-          
-          <input type="text" onChange={this.updateInput}value={this.state.input}/>
-          <input type="text" ref={(input) => this.text = input} />
-          <input type="email" ref={(input) => this.email = input} />
-          <button onClick={this.submit}> show value</button>
+          <img src={logo} className="" alt="logo" />
         </header>
-
-        
+        {movies.map(movie => <Movie key={movie.id} test={movie} />)}
       </div>
     );
   }
 }
 
-class Welcome extends Component {
-  render() {
-    // do some js before return
-    const { text } = this.props; 
-      return (
-      <h1 className="App-title">{ text }</h1>
-      // passing data from parent class to child class
-      //<h1 className="App-title">{this.props.text}</h1>
-    );
-  }
-} 
-export default App; 
+export default App;
