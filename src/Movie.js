@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
+const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 // we can use functional stateless components anytime when
 // we are not using stat, refs and lifecycle funciton.
 // In this movie component is an example of it so we can use
 // instead a Movie class a Movie function (functional stateless components)
 
+
+// `${POSTER_PATH}${movie.poster_path}` is string interpollation
+// string interpollation allows to insert js variable into string(back tick and dollar sign)
 const Movie = ({ movie }) => (
   <div>
-    <h3>{movie.title}</h3>
+    <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
   </div>
 );
 
@@ -20,22 +25,3 @@ Movie.propTypes = {
     title: PropTypes.string.isRequired,
   }).isRequired,
 };
-
-// proptype is necessary for each prop used in the app
-
-/* export default class Movie extends Component {
-  static propTypes = {
-    //shape allows us to validate object with elements inside obj
-    movie: PropTypes.shape({
-      title: PropTypes.string.isRequired,
-    }),
-  }
-  render() {
-    return (
-      <div>
-        <h3>{this.props.test.title}</h3>
-
-      </div>
-    )
-  }
-} */
