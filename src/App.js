@@ -1,45 +1,34 @@
-/*eslint react/no-did-mount-set-state:0 */
+/* eslint react/no-did-mount-set-state:0 */
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
+  Link,
 } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-import Movie from './Movie';
+import MoviesList from './MoviesList';
 
 
-class App extends Component {
-  state = { 
-    movies: [],
-  }
-  async componentDidMount() {
-    try {
-      const res = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=4894308b4df1b3836a605ed3ead4670f&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1');
-      const movies = await res.json();
-      this.setState({
-        movies: movies.results
-      })
-    } catch(e) {
-      console.log(e);
-    }
-  } 
-  
-  render() {
-    return (
-      <Router>
-      <div className="App">
-        <header className="App-header">
+const App = () => (
+  <Router>
+    <div className="App">
+      <header className="App-header">
+        <Link to="/">
           <img src={logo} className="" alt="logo" />
-        </header>
+        </Link>
+      </header>
+      <Switch>
+        <Route exact path="/" component={MoviesList} />
         <Route path="/test" component={Test} />
-        {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
-      </div>
-      </Router>
-    );
-  }
-}
+      </Switch>
+
+    </div>
+  </Router>
+);
+
 
 export default App;
 
