@@ -18,7 +18,7 @@ const App = () => (
     <div className="App">
       <header className="App-header">
         <Link to="/">
-          <img src={logo} className="" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
         </Link>
       </header>
       <Switch>
@@ -33,6 +33,6 @@ const App = () => (
 
 export default App;
 
-const Test = ({ match }) => (
+/*const Test = ({ match }) => (
   <h1>{match.params.id}</h1>
-);
+); */
