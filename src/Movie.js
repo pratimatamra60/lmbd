@@ -14,7 +14,7 @@ const POSTER_PATH = 'http://image.tmdb.org/t/p/w154';
 // string interpollation allows to insert js variable into string(back tick and dollar sign)
 const Movie = ({ movie }) => (
   <div>
-    <Link to="/test">
+    <Link to={`/${movie.id}`}>
       <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
     </Link>
   </div>
