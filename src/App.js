@@ -28,7 +28,7 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="" alt="logo" />
         </header>
-        {this.state.movies.map(movie => <Movie key={movie.id} test={movie} />)}
+        {this.state.movies.map(movie => <Movie key={movie.id} movie={movie} />)}
       </div>
     );
   }
